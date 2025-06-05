@@ -1,22 +1,20 @@
-module ripple_carry_adder_8bit_tb;
+module carry_lookahead_adder_8bit_tb;
 
     reg [7:0] a, b;
     reg cin;
     wire [7:0] sum;
     wire cout;
 
-    ripple_carry_adder_8bit uut (
-        .a(a),
-        .b(b),
-        .cin(cin),
-        .sum(sum),
-        .cout(cout)
+    // Instantiate the CLA
+    carry_lookahead_adder_8bit uut (
+        .a(a), .b(b), .cin(cin),
+        .sum(sum), .cout(cout)
     );
-    initial begin
-      $dumpfile("rca8.vcd");
-      $dumpvars(0, ripple_carry_adder_8bit_tb);
-	end
 
+    initial begin
+      $dumpfile("cla8.vcd");
+      $dumpvars(0, carry_lookahead_adder_8bit_tb);
+    end
     initial begin
         $display("Time |     A      +     B      + Cin =     Sum     Cout");
         $display("----------------------------------------------------------");
